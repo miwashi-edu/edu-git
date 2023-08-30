@@ -1,19 +1,37 @@
 # edu-git
 
-## Create repository
+## Skapa gitlek i github (Ta bort gammal om det finns)
 
-## Init
+> gitlek ska ha README.md, inget annat.
+
 ```bash
-cd ~
-cd ws
-mkdir gitplay
-cd gitplay
-git init
+git clone https://github.com/[ANVÄNDARE]/gitlek.git gitlek1
+git clone https://github.com/[ANVÄNDARE]/gitlek.git gitlek2
 ```
+## Ändra README.md i github
 
-## Let github initialize it and clone it
-
-> First create a repository in git with the name gitplay
 ```bash
-git clone https://github.com/miwashi-edu/gitplay.git
+cd gitlek1
+echo -e "\ntext" >> README.md
+git add .
+git commit -m "Ändrat i gitlek1"
+
+
+cd ../gitlek2
+echo -e "\ntext" >> README.md
+git add .
+git commit -m "Ändrat i gitlek2"
+
+cd ../gitlek1
+git fetch
+git merge
+vi README.md #Ta bort konflikter
+git add .
+git commit -m "Merged"
+
+cd ../gitlek2
+git fetch
+git rebase
+vi README.md #Ta bort konflikter
+git rebase --continue
 ```
